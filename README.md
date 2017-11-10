@@ -8,8 +8,6 @@ Front-end-util
 
 |Title                      |Description               |Demo                                                                                 
 |---------------------------|--------------------------|-------------|
-|Validation         		|表单验证                   |[preview]()
-|...                        |...                       |...     
                                                                              
 ### Websites
 

@@ -1,14 +1,13 @@
 'use strict';
-// 封装原生ajax
 function ajax(opts) {
 
     var xmlhttp = new XMLHttpRequest(); // 新建ajax请求，不兼容IE7以下
-    xmlhttp.onreadystatechange = function() {
+    xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState == 4) {
             if ((xmlhttp.status >= 200 && xmlhttp.status < 300) || xmlhttp.status == 304) {
                 var data = JSON.parse(xmlhttp.responseText);
                 opts.success(data);  // callback
-            } 
+            }
             else {
                 alert('出错啦');
             }
@@ -17,7 +16,7 @@ function ajax(opts) {
         // 获取data键值对
         var dataSend = '';
         for (var key in opts.data) {
-            dataSend += key +  '=' + opts.data[key] + '&';
+            dataSend += key + '=' + opts.data[key] + '&';
         }
 
         if (opts.method.toLowerCase() === 'get') {
