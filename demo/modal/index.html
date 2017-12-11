@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="index.css">
+    <title>Modal组件</title>
+</head>
+<body>
+    <div class="mask"></div>
+    <!-- Start = login-modal -->
+    <div class="modal" id="loginModal" role="modal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">登录花森煜米账号</h4>
+                    <button class="btn close" data-dismiss="modal" aria-label="close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form action="">
+                        <div class="user-item">
+                            <label for="mod-username" class="user-label">
+                                <i class="user-icon iconfont icon-login"></i>
+                            </label>
+                            <input type="text" id="mod-username" class="user-content" placeholder="用户名" required>
+                            <span class="btn reset">&times;</span>
+                        </div>
+                        <div class="user-item">
+                            <label for="mod-password" class="user-label">
+                                <i class="user-icon iconfont icon-password"></i>
+                            </label>
+                            <input type="password" id="mod-password" class="user-content" placeholder="密码" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <div class="footer-above clearfix">
+                        <div class="select-container">
+                            <input type="checkbox" id="check" checked class="user-content">
+                            <label for="check" class="user-label">记住用户名</label>
+                        </div>
+                        <a id="loginBarrier" href="###" class="link">登录遇到问题</a>
+                    </div>
+                    <div class="footer-below">
+                        <div class="btn-container">
+                            <button class="btn opera-btn">登录</button>
+                        </div>
+                        <a href="###" class="link">立即注册</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End = login-modal -->
+    <!-- Start = password-modal -->
+    <!-- <div class="modal" id="passwordReset_Modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">密码找回</h4>
+                    <button class="btn close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form action="">
+                        <div class="user-item">
+                            <label for="mod-username" class="user-label">
+                                <i class="user-icon iconfont icon-login"></i>
+                            </label>
+                            <input type="text" id="mod-username" class="user-content" placeholder="用户名" required>
+                            <span class="btn reset">&times;</span>
+                        </div>
+                        <div class="user-item">
+                            <label for="mod-phone" class="user-label">
+                                <i class="user-icon iconfont icon-phone"></i>
+                            </label>
+                            <input type="text" id="mod-phone" class="user-content" placeholder="联系电话" required>
+                        </div>
+                        <div class="user-item">
+                            <label for="mod-password-reset" class="user-label">
+                                <i class="user-icon iconfont icon-password"></i>
+                            </label>
+                            <input type="password" id="mod-password-reset" class="user-content" placeholder="新密码" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <div class="footer-below">
+                        <div class="btn-container">
+                            <button class="btn opera-btn">确认修改</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!-- End = password-modal -->
+    <main>
+        <div class="mod">
+            <button id="toggleModal" type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">点击Modal层</button>
+        </div>
+        <div class="mod"></div>
+        <div class="mod"></div>
+        <div class="mod"></div>
+        <div class="mod"></div>
+    </main>
+</body>
+<script src="../../libs/modal/modal.js"></script>
+<script>
+    var loginModal   = new modal('loginModal');
+    var btnModal     = document.querySelector('#toggleModal');
+    var modalOuter   = document.querySelector('.modal');
+    var modalInter   = document.querySelector('.modal-dialog');
+    // 所有设置有data-dismiss="modal"的元素
+    var dismissModal = document.querySelector('[data-dismiss="modal"]'); 
+
+    // 点击登录modal弹出层
+    btnModal.addEventListener("click", function() {
+        console.log(loginModal.element);
+        loginModal.show(loginModal.element);
+    }, false);
+
+    // 点击Modal框之外或“close”关闭Modal
+    modalOuter.addEventListener('click', function() {
+        loginModal.hide(loginModal.element);
+    }, false);
+
+    // 点击Modal对话框停止冒泡    
+    modalInter.addEventListener('click', function(event) {
+        event.stopPropagation();
+    }, false);
+
+    dismissModal.addEventListener('click', function() {
+         loginModal.hide(loginModal.element);
+    }, false);
+</script>
+</html>
