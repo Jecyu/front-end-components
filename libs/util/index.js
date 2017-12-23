@@ -129,3 +129,20 @@ function validate(str, type) {
         return /^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/.test(str);
     }
 }
+
+
+/**
+ * 把那些在页面加载完毕时执行的函数创建为一个队列。
+ * @param {object} func  在页面加载完毕时执行的函数的名字 
+ */
+function addLoadEvent(func) {
+    var oldonload = window.onload;
+    if (typeof window.onload != 'function') {
+        window.onload = func;
+    } else {
+        window.onload = function() {
+            oldonload();
+            func();
+        }
+    }
+}
