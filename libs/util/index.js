@@ -1,6 +1,15 @@
-'use strict';
-(function () {
-  const myUtil = {
+// 修改为umd模块
+(function (global, factory) {
+  // 判断是否cmd
+  typeof exports === 'object' && typeof module !== 'undefined' ?
+  module.exports = factory() :
+  // 判断是否amd
+  typeof define === 'function' && define.amd ? define(factory) :
+  // 判断是否script标签引入
+  (global.myUtil = factory())
+})(this, function () {
+    'use strict';
+    const myUtil = {
     ajax: function (opts) {
       var xmlhttp = new XMLHttpRequest(); // 新建ajax请求，不兼容IE7以下
       xmlhttp.onreadystatechange = function () {
@@ -147,4 +156,5 @@
       }
     }
   };
-})();
+  return myUtil;
+});
