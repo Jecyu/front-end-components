@@ -1,0 +1,65 @@
+{
+  "name": "front-end-component",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "scripts": {
+    "dev": "rollup -c -w --environment BUILD:development",
+    "build": "rollup -c",
+    "reload": "live-server",
+    "watch": "npm-run-all --parallel reload dev",
+    "buildAll": "yarn esm && yarn cjs && yarn umd",
+    "esm": "rollup -c rollup.config.js -f es -o dist/index.esm.js",
+    "cjs": "rollup -c rollup.config.js -f cjs -o dist/index.cjs.js",
+    "umd": "rollup -c rollup.config.js -f umd -o dist/index.umd.js"
+  },
+  "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shooterRao/create-simple-wheels.git"
+  },
+  "keywords": [
+    "modal",
+    "js"
+  ],
+  "author": "Jecyu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Jecyu/front-end-components/issues"
+  },
+  "homepage": "https://github.com/Jecyu/front-end-components#readme",
+  "devDependencies": {
+    "autoprefixer": "^9.1.0",
+    "husky": "^3.0.4",
+    "less": "^3.8.0",
+    "less-loader": "^5.0.0",
+    "lint-staged": "^9.2.3",
+    "live-server": "^1.2.1",
+    "livereload": "^0.8.1",
+    "npm-run-all": "^4.1.5",
+    "prettier": "1.18.2",
+    "rollup": "^1.19.4",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-postcss": "^2.0.3",
+    "rollup-plugin-typescript2": "^0.22.1",
+    "rollup-plugin-uglify": "^6.0.2",
+    "rollup-watch": "^4.3.1",
+    "typescript": "^3.5.3"
+  },
+  "lint-staged": {
+    "src/*.js": [
+      "prettier --write",
+      "git add"
+    ],
+    "src/*.css": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
+}

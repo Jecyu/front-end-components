@@ -8,6 +8,7 @@
  * modal 
  * @param modalId {string} modal元素id
  */
+import './index.css'
 function modal(modalId) {
     this.id = modalId;
     this.element = document.querySelector('#' + modalId);
@@ -36,6 +37,8 @@ modal.prototype = {
     }
     
 }
+
+export default modal;
 
 
 
